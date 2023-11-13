@@ -1,5 +1,6 @@
 package christmas.utils;
 
+import static christmas.constant.ErrorMessage.INPUT_BLANK_ERROR;
 import static christmas.constant.ErrorMessage.MENU_INPUT_ERROR;
 
 import christmas.model.Menu;
@@ -11,6 +12,7 @@ public class Util {
 
     private static final String MENU_DELIMITER = ",";
     private static final String MENU_COUNT_DELIMITER = "-";
+    private static final String BLANK = " ";
 
     public static int convertToInt(String input) {
         try {
@@ -22,9 +24,16 @@ public class Util {
 
     public static List<String> splitMenuFromString(String input) {
         try {
+            validateHasBlank(input);
             return List.of(input.split(MENU_DELIMITER));
         } catch (IllegalArgumentException exception) {
-            throw new IllegalArgumentException(MENU_INPUT_ERROR.getMessage());
+            throw new IllegalArgumentException(exception.getMessage());
+        }
+    }
+
+    private static void validateHasBlank(String input) {
+        if (input.contains(BLANK)) {
+            throw new IllegalArgumentException(INPUT_BLANK_ERROR.getMessage());
         }
     }
 
