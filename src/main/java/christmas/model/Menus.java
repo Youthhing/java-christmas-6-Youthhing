@@ -4,6 +4,7 @@ import static christmas.constant.ErrorMessage.MENU_COUNT_ERROR;
 import static christmas.constant.ErrorMessage.MENU_NAME_ERROR;
 import static christmas.constant.ErrorMessage.MENU_SIZE_ERROR;
 
+import christmas.constant.ErrorMessage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ public class Menus {
         validateNoSuchMenu(menus);
         validateMenuCount(menus);
         validateSize(menus);
+        validateMenuType(menus);
         this.menus = menus;
     }
 
@@ -49,4 +51,17 @@ public class Menus {
                 .mapToInt(Integer::intValue)
                 .sum();
     }
+
+    private void validateMenuType(Map<Menu, Integer> menus) {
+        if (isAllDrink(menus)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_ONLY_DRINK_ERROR.getMessage());
+        }
+    }
+
+    private boolean isAllDrink(Map<Menu, Integer> menus) {
+        return menus.keySet()
+                .stream()
+                .allMatch(menu -> menu.getType() == MenuType.DRINK);
+    }
+
 }

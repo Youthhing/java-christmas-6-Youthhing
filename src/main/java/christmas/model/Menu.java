@@ -50,6 +50,10 @@ public enum Menu {
                 .orElse(NO_MENU);
     }
 
+    public MenuType getType() {
+        return type;
+    }
+
     public List<Menu> getMenuByType(MenuType type) {
         return Arrays.stream(Menu.values())
                 .filter(menu -> menu.type == type)
