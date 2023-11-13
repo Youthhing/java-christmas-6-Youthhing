@@ -41,11 +41,13 @@ public class Util {
         try {
             return input.stream()
                     .map(string -> string.split(MENU_COUNT_DELIMITER))
-                    .collect(Collectors.toMap(
-                            array -> Menu.getMenuByName(array[0]), array -> convertToInt(array[1])
-                    ));
-        } catch (IllegalArgumentException | ArrayIndexOutOfBoundsException exception) {
+                    .collect(Collectors.toMap(array -> Menu.getMenuByName(array[0]), array -> convertToInt(array[1])));
+        } catch (final IllegalArgumentException exception) {
             throw new IllegalArgumentException(MENU_INPUT_ERROR.getMessage());
+        } catch (final ArrayIndexOutOfBoundsException exception) {
+            throw new ArrayIndexOutOfBoundsException(MENU_INPUT_ERROR.getMessage());
+        } catch (final IllegalStateException exception) {
+            throw new IllegalStateException(MENU_INPUT_ERROR.getMessage());
         }
     }
 }
