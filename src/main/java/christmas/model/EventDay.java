@@ -3,6 +3,7 @@ package christmas.model;
 import christmas.constant.ErrorMessage;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.Period;
 
 public class EventDay {
 
@@ -21,16 +22,17 @@ public class EventDay {
         return isSunDay() || isChristMas();
     }
 
+    public int calculateDayToChristmas() {
+        LocalDate xmas = LocalDate.of(2023, 12, 25);
+        return Period.between(date, xmas).getDays();
+    }
+
     private boolean isFriDay() {
         return date.getDayOfWeek() == DayOfWeek.FRIDAY;
     }
 
     private boolean isChristMas() {
         return date.getDayOfMonth() == 25;
-    }
-
-    private boolean isSaturday() {
-        return date.getDayOfWeek() == DayOfWeek.SATURDAY;
     }
 
     private boolean isSunDay() {
