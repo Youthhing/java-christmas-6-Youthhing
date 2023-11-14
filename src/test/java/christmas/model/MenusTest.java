@@ -22,7 +22,7 @@ class MenusTest {
         order.put(Menu.NO_MENU, 2);
 
         //when,then
-        Assertions.assertThatThrownBy(() -> new Menus(order))
+        assertThatThrownBy(() -> new Menus(order))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.MENU_NAME_ERROR.getMessage());
     }
@@ -35,7 +35,7 @@ class MenusTest {
         order.put(Menu.SALAD, 0);
 
         //when,then
-        Assertions.assertThatThrownBy(() -> new Menus(order))
+        assertThatThrownBy(() -> new Menus(order))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.MENU_COUNT_ERROR.getMessage());
     }
@@ -48,7 +48,7 @@ class MenusTest {
         order.put(Menu.SALAD, -10);
 
         //when,then
-        Assertions.assertThatThrownBy(() -> new Menus(order))
+        assertThatThrownBy(() -> new Menus(order))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.MENU_COUNT_ERROR.getMessage());
     }
@@ -64,7 +64,7 @@ class MenusTest {
         order.put(Menu.CHOCO_CAKE, 4);
 
         //when,then
-        Assertions.assertThatThrownBy(() -> new Menus(order))
+        assertThatThrownBy(() -> new Menus(order))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.MENU_SIZE_ERROR.getMessage());
     }
@@ -79,7 +79,7 @@ class MenusTest {
         order.put(Menu.CHAMPAGNE, 2);
 
         //when, then
-        Assertions.assertThatNoException().isThrownBy(() -> new Menus(order));
+        assertThatNoException().isThrownBy(() -> new Menus(order));
     }
 
     @DisplayName("음료수만 주문하면 예외가 발생한다.")
@@ -92,7 +92,7 @@ class MenusTest {
         order.put(Menu.ZERO_COKE, 1);
 
         //when,then
-        Assertions.assertThatThrownBy(() -> new Menus(order))
+        assertThatThrownBy(() -> new Menus(order))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.NOT_ONLY_DRINK_ERROR.getMessage());
     }
@@ -111,7 +111,7 @@ class MenusTest {
         int totalMoney = menus.calculateTotalMoney();
 
         //then
-        Assertions.assertThat(totalMoney).isEqualTo(104000);
+        assertThat(totalMoney).isEqualTo(104000);
     }
 
     @DisplayName("총 주문 금액이 12만원 이상이면 증정 가능을 반환한다.")
