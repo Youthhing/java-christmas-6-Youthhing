@@ -76,4 +76,36 @@ class MenusTest {
         //when, then
         Assertions.assertThatNoException().isThrownBy(() -> new Menus(order));
     }
+
+    @DisplayName("음료수만 주문하면 예외가 발생한다.")
+    @Test
+    void 음료수만_주문시_예외_처리() {
+        //given
+        final Map<Menu, Integer> order = new HashMap<>();
+        order.put(Menu.RED_WINE, 10);
+        order.put(Menu.CHAMPAGNE, 5);
+        order.put(Menu.ZERO_COKE, 1);
+
+        //when,then
+        Assertions.assertThatThrownBy(() -> new Menus(order))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.NOT_ONLY_DRINK_ERROR.getMessage());
+    }
+
+    @DisplayName("계산한 주문 금액과 총 주문 금액이 일치한다.")
+    @Test
+    void 주문_총_금액_계산_기능() {
+        //given
+        final Map<Menu, Integer> order = new HashMap<>();
+        order.put(Menu.CHOCO_CAKE, 2);
+        order.put(Menu.BARBEQUE_LIB, 1);
+        order.put(Menu.ICE_CREAM, 4);
+        Menus menus = new Menus(order);
+
+        //when
+        int totalMoney = menus.calculateTotalMoney();
+
+        //then
+        Assertions.assertThat(totalMoney).isEqualTo(104000);
+    }
 }
