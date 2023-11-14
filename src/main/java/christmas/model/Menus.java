@@ -28,6 +28,10 @@ public class Menus {
                 .sum();
     }
 
+    public boolean canPresent() {
+        return calculateTotalMoney() >= 120000;
+    }
+
     private int calculateEachMoney(Menu menu) {
         return menus.get(menu) * menu.getPrice();
     }
