@@ -54,8 +54,9 @@ public class OutputView {
         System.out.println(MENU_INPUT_ERROR);
     }
 
-    public void printPreviewBenefitMessage() {
-        System.out.println(PREVIEW_BENEFIT_MESSAGE);
+    public void printPreviewBenefitMessage(EventDay date) {
+        System.out.println(PREVIEW_BENEFIT_MESSAGE_FRONT + date + PREVIEW_BENEFIT_MESSAGE_BACK);
+        printEmptyLine();
     }
 
     public void printOrderedMenus(Menus menus) {
