@@ -8,6 +8,10 @@ import java.util.Map;
 
 public class InputView {
 
+    public int readDate() {
+        return Util.convertToInt(input());
+    }
+
     public Map<Menu, Integer> readMenu() {
         List<String> splitMenu = Util.splitMenuFromString(input());
         return Util.parseMenuAndCount(splitMenu);
