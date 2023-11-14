@@ -52,4 +52,9 @@ public class EventDay {
     private boolean isInRange(int date) {
         return 1 <= date && date <= 31;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(date.getDayOfMonth());
+    }
 }

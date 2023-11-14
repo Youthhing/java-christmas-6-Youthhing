@@ -4,6 +4,7 @@ import static christmas.constant.ErrorMessage.INPUT_BLANK_ERROR;
 import static christmas.constant.ErrorMessage.MENU_INPUT_ERROR;
 
 import christmas.model.Menu;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -49,5 +50,10 @@ public class Util {
         } catch (final IllegalStateException exception) {
             throw new IllegalStateException(MENU_INPUT_ERROR.getMessage());
         }
+    }
+
+    public static String integerFormat(int money) {
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        return decimalFormat.format(money);
     }
 }

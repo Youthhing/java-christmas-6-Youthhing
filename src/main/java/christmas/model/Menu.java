@@ -60,4 +60,9 @@ public enum Menu {
                 .filter(menu -> menu.type == type)
                 .toList();
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
