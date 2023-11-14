@@ -1,9 +1,14 @@
 package christmas.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import christmas.constant.ErrorMessage;
 import java.util.HashMap;
 import java.util.Map;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -107,5 +112,35 @@ class MenusTest {
 
         //then
         Assertions.assertThat(totalMoney).isEqualTo(104000);
+    }
+
+    @DisplayName("총 주문 금액이 12만원 이상이면 증정 가능을 반환한다.")
+    @Test
+    void 증정_가능() {
+        //given
+        final Map<Menu, Integer> order = new HashMap<>();
+        order.put(Menu.BARBEQUE_LIB, 3);
+        Menus menus = new Menus(order);
+
+        //when
+        boolean toGivePresent = menus.canPresent();
+
+        //then
+        assertTrue(toGivePresent);
+    }
+
+    @DisplayName("총 주문 금액이 12만원 미만이면 증정이 불가능하다.")
+    @Test
+    void 증정_불가능() {
+        //given
+        final Map<Menu, Integer> order = new HashMap<>();
+        order.put(Menu.BARBEQUE_LIB, 2);
+        Menus menus = new Menus(order);
+
+        //when
+        boolean toGivePresent = menus.canPresent();
+
+        //then
+        assertFalse(toGivePresent);
     }
 }
