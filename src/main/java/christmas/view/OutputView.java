@@ -1,5 +1,8 @@
 package christmas.view;
 
+import static christmas.constant.ErrorMessage.DATE_INPUT_ERROR;
+import static christmas.constant.ErrorMessage.MENU_INPUT_ERROR;
+
 public class OutputView {
 
     private static final String WELCOME_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
@@ -17,6 +20,14 @@ public class OutputView {
 
     public void printInputMenuMessage() {
         System.out.println(INPUT_MENU_MESSAGE);
+    }
+
+    public void printDateInputError() {
+        System.out.println(DATE_INPUT_ERROR);
+    }
+
+    public void printMenuInputError() {
+        System.out.println(MENU_INPUT_ERROR);
     }
 
     public void printPreviewBenefitMessage() {
