@@ -38,14 +38,14 @@ public class Discount {
 
     public int calculateWeekendDiscount() {
         if (eventDay.isWeekend()) {
-            return menus.getDessertMenuCount() * 2023;
+            return menus.getMainMenuCount() * 2023;
         }
         return 0;
     }
 
     public int calculateWeekdayDiscount() {
         if (!eventDay.isWeekend()) {
-            return menus.getMainMenuCount() * 2023;
+            return menus.getDessertMenuCount() * 2023;
         }
         return 0;
     }
