@@ -31,6 +31,10 @@ public class EventDay {
         return date.getDayOfWeek() == DayOfWeek.FRIDAY;
     }
 
+    private boolean isSaturday() {
+        return date.getDayOfWeek() == DayOfWeek.SATURDAY;
+    }
+
     private boolean isChristMas() {
         return date.getDayOfMonth() == 25;
     }
