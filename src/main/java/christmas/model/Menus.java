@@ -32,6 +32,22 @@ public class Menus {
         return calculateTotalMoney() >= 120000;
     }
 
+    public int getDessertMenuCount() {
+        return menus.keySet()
+                .stream()
+                .filter(menu -> menu.getType() == MenuType.DESSERT)
+                .mapToInt(menus::get)
+                .sum();
+    }
+
+    public int getMainMenuCount() {
+        return menus.keySet()
+                .stream()
+                .filter(menu -> menu.getType() == MenuType.MAIN)
+                .mapToInt(menus::get)
+                .sum();
+    }
+
     private int calculateEachMoney(Menu menu) {
         return menus.get(menu) * menu.getPrice();
     }
@@ -80,4 +96,14 @@ public class Menus {
                 .allMatch(menu -> menu.getType() == MenuType.DRINK);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        menus.forEach((menu, integer) ->
+                result.append(menu)
+                        .append(" ")
+                        .append(integer)
+                        .append("개\n"));
+        return result.toString();
+    }
 }
