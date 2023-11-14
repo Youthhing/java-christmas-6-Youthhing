@@ -23,8 +23,8 @@ public class Discount {
     }
 
     public int calculateDiscountByDday() {
-        if (eventDay.calculateDayToChristmas() >= 0) {
-            return 1000 + getDaysFromDecember() * 100;
+        if (eventDay.calculateDayFromDecember() < 25) {
+            return 1000 + eventDay.calculateDayFromDecember() * 100;
         }
         return 0;
     }

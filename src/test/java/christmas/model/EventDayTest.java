@@ -121,18 +121,18 @@ class EventDayTest {
         assertTrue(weekend);
     }
 
-    @DisplayName("크리스마스까지의 남은 디데이를 반환한다.")
+    @DisplayName("12월 1일 이후로 지난 날짜를 계산한다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25})
-    void 디데이_계산_기능(int today) {
+    void 지난_날짜_계산_기능(int today) {
         //given
         EventDay eventDay = new EventDay(today);
 
         //when
-        int remainDays = eventDay.calculateDayToChristmas();
+        int remainDays = eventDay.calculateDayFromDecember();
 
         //when
-        assertThat(remainDays).isEqualTo(25 - today);
+        assertThat(remainDays).isEqualTo(today - 1);
     }
 
 }

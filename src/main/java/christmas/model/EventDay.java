@@ -22,9 +22,9 @@ public class EventDay {
         return isSunDay() || isChristMas();
     }
 
-    public int calculateDayToChristmas() {
-        LocalDate xmas = LocalDate.of(2023, 12, 25);
-        return Period.between(date, xmas).getDays();
+    public int calculateDayFromDecember() {
+        LocalDate baseDay = LocalDate.of(2023, 12, 1);
+        return Period.between(baseDay, date).getDays();
     }
 
     private boolean isFriDay() {
