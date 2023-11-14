@@ -12,8 +12,8 @@ public class Discount {
 
     public int calculateTotalBenefitPrice() {
         if (canDiscount()) {
-            return calculateDiscountByDday() + calculateDiscountByDayType() + calculateDiscountByPresent()
-                    + calculateDiscountBySpecialDay();
+            return calculateDiscountByDday() + calculateWeekendDiscount() + calculateWeekdayDiscount()
+                    + calculateDiscountByPresent() + calculateDiscountBySpecialDay();
         }
         return 0;
     }
@@ -36,11 +36,18 @@ public class Discount {
         return 0;
     }
 
-    public int calculateDiscountByDayType() {
+    public int calculateWeekendDiscount() {
         if (eventDay.isWeekend()) {
             return menus.getDessertMenuCount() * 2023;
         }
-        return menus.getMainMenuCount() * 2023;
+        return 0;
+    }
+
+    public int calculateWeekdayDiscount() {
+        if (!eventDay.isWeekend()) {
+            return menus.getMainMenuCount() * 2023;
+        }
+        return 0;
     }
 
     public int calculateDiscountBySpecialDay() {
@@ -59,6 +66,7 @@ public class Discount {
     }
 
     private int calculateTotalDiscount() {
-        return calculateDiscountByDayType() + calculateDiscountBySpecialDay() + calculateDiscountByDday();
+        return calculateWeekendDiscount() + calculateWeekdayDiscount() + calculateDiscountBySpecialDay()
+                + calculateDiscountByDday();
     }
 }
