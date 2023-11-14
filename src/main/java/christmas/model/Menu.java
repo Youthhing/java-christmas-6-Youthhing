@@ -14,7 +14,7 @@ public enum Menu {
     MUSHROOM_SOUP("양송이수프", 6000, APPETIZER),
     TAPAS("타파스", 5500, APPETIZER),
     SALAD("시저샐러드", 8000, APPETIZER),
-    T_BONE_STEAK("티폰스테이크", 55000, MAIN),
+    T_BONE_STEAK("티본스테이크", 55000, MAIN),
     BARBEQUE_LIB("바비큐립", 54000, MAIN),
     SEAFOOD_PASTA("해산물파스타", 35000, MAIN),
     CHOCO_CAKE("초코케이크", 15000, DESSERT),
