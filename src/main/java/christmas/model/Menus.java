@@ -8,6 +8,7 @@ import christmas.constant.ErrorMessage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Menus {
     private final Map<Menu, Integer> menus;
@@ -18,6 +19,17 @@ public class Menus {
         validateSize(menus);
         validateMenuType(menus);
         this.menus = menus;
+    }
+
+    public int calculateTotalMoney() {
+        Set<Menu> menuNames = menus.keySet();
+        return menuNames.stream()
+                .mapToInt(this::calculateEachMoney)
+                .sum();
+    }
+
+    private int calculateEachMoney(Menu menu) {
+        return menus.get(menu) * menu.getPrice();
     }
 
     private void validateNoSuchMenu(Map<Menu, Integer> menus) {
