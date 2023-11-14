@@ -13,7 +13,7 @@ public class Discount {
     public int calculateTotalBenefitPrice() {
         if (canDiscount()) {
             return calculateDiscountByDday() + calculateWeekendDiscount() + calculateWeekdayDiscount()
-                    + calculateDiscountByPresent() + calculateDiscountBySpecialDay();
+                    + calculateBenefitByPresent() + calculateDiscountBySpecialDay();
         }
         return 0;
     }
@@ -29,7 +29,7 @@ public class Discount {
         return 0;
     }
 
-    public int calculateDiscountByPresent() {
+    public int calculateBenefitByPresent() {
         if (menus.canPresent()) {
             return 25000;
         }
@@ -59,10 +59,6 @@ public class Discount {
 
     private boolean canDiscount() {
         return menus.calculateTotalMoney() >= 10000;
-    }
-
-    private int getDaysFromDecember() {
-        return 24 - eventDay.calculateDayToChristmas();
     }
 
     private int calculateTotalDiscount() {
