@@ -21,7 +21,7 @@ public enum Badge {
     public static Badge getBadgeByDiscount(int discount) {
         return Arrays.stream(Badge.values())
                 .filter(badge -> badge.isInRange(discount))
-                .findFirst()
+                .findAny()
                 .orElse(NONE);
 
     }
