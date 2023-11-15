@@ -3,6 +3,9 @@ package christmas.model;
 import static christmas.constant.ErrorMessage.MENU_COUNT_ERROR;
 import static christmas.constant.ErrorMessage.MENU_NAME_ERROR;
 import static christmas.constant.ErrorMessage.MENU_SIZE_ERROR;
+import static christmas.constant.StringConstant.BLANK;
+import static christmas.constant.StringConstant.COUNT;
+import static christmas.constant.StringConstant.NEXT_LINE;
 
 import christmas.constant.ErrorMessage;
 import java.util.ArrayList;
@@ -35,7 +38,7 @@ public class Menus {
     public int getDessertMenuCount() {
         return menus.keySet()
                 .stream()
-                .filter(menu -> menu.getType() == MenuType.DESSERT)
+                .filter(Menus::isContainDessert)
                 .mapToInt(menus::get)
                 .sum();
     }
@@ -43,9 +46,17 @@ public class Menus {
     public int getMainMenuCount() {
         return menus.keySet()
                 .stream()
-                .filter(menu -> menu.getType() == MenuType.MAIN)
+                .filter(Menus::isContainMain)
                 .mapToInt(menus::get)
                 .sum();
+    }
+
+    private static boolean isContainDessert(Menu menu) {
+        return Menu.getMenuByType(MenuType.DESSERT).contains(menu);
+    }
+
+    private static boolean isContainMain(Menu menu) {
+        return Menu.getMenuByType(MenuType.MAIN).contains(menu);
     }
 
     private int calculateEachMoney(Menu menu) {
@@ -63,7 +74,6 @@ public class Menus {
         if (hasBelowZero(counts)) {
             throw new IllegalArgumentException(MENU_COUNT_ERROR.getMessage());
         }
-
     }
 
     private boolean hasBelowZero(List<Integer> counts) {
