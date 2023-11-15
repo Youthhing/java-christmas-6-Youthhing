@@ -55,12 +55,12 @@ public class OutputView {
         System.out.println(MENU_INPUT_ERROR);
     }
 
-    public void printPreviewBenefitMessage(EventDay date) {
+    public void printPreviewBenefitMessage(final EventDay date) {
         System.out.println(PREVIEW_BENEFIT_MESSAGE_FRONT + date + PREVIEW_BENEFIT_MESSAGE_BACK);
         printEmptyLine();
     }
 
-    public void printOrderedMenus(Menus menus) {
+    public void printOrderedMenus(final Menus menus) {
         System.out.println(ORDERED_MENU);
         System.out.println(menus);
     }
@@ -71,7 +71,7 @@ public class OutputView {
         printEmptyLine();
     }
 
-    public void printPresentMenu(Menus menus) {
+    public void printPresentMenu(final Menus menus) {
         System.out.println(PRESENT_MENU);
         if (menus.canPresent()) {
             System.out.println(Menu.CHAMPAGNE + COUNT);
@@ -80,7 +80,7 @@ public class OutputView {
         System.out.println(Menu.NO_MENU);
     }
 
-    public void printBenefitList(Discount discount) {
+    public void printBenefitList(final Discount discount) {
         System.out.println(BENEFIT_LIST);
         printEachBenefits(discount);
         printEmptyLine();
@@ -105,12 +105,12 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printBadge(Badge badgeByDiscount) {
+    public void printBadge(final Badge badgeByDiscount) {
         System.out.println(DECEMBER_EVENT_BADGE);
         System.out.println(badgeByDiscount);
     }
 
-    private void printEachBenefits(Discount discount) {
+    private void printEachBenefits(final Discount discount) {
         if (discount.calculateTotalBenefitPrice() == 0) {
             System.out.println(NONE);
             return;
@@ -122,35 +122,35 @@ public class OutputView {
         printPresentDiscount(discount);
     }
 
-    private void printXmasDiscount(Discount discount) {
+    private void printXmasDiscount(final Discount discount) {
         if (discount.calculateDiscountByDday() > 0) {
             System.out.println(
                     XMAS_DDAY_DISCOUNT + MINUS + Util.integerFormat(discount.calculateDiscountByDday()) + WON);
         }
     }
 
-    private void printWeekendDiscount(Discount discount) {
+    private void printWeekendDiscount(final Discount discount) {
         if (discount.calculateWeekendDiscount() > 0) {
             System.out.println(
                     WEEKEND_DISCOUNT + MINUS + Util.integerFormat(discount.calculateWeekendDiscount()) + WON);
         }
     }
 
-    private void printWeekdayDiscount(Discount discount) {
+    private void printWeekdayDiscount(final Discount discount) {
         if (discount.calculateWeekdayDiscount() > 0) {
             System.out.println(
                     WEEKDAY_DISCOUNT + MINUS + Util.integerFormat(discount.calculateWeekdayDiscount()) + WON);
         }
     }
 
-    private void printSpecialDayDiscount(Discount discount) {
+    private void printSpecialDayDiscount(final Discount discount) {
         if (discount.calculateDiscountBySpecialDay() > 0) {
             System.out.println(
                     SPECIAL_DISCOUNT + MINUS + Util.integerFormat(discount.calculateDiscountBySpecialDay()) + WON);
         }
     }
 
-    private void printPresentDiscount(Discount discount) {
+    private void printPresentDiscount(final Discount discount) {
         if (discount.calculateBenefitByPresent() > 0) {
             System.out.println(PRESENT_EVENT + MINUS + Util.integerFormat(discount.calculateBenefitByPresent()) + WON);
         }

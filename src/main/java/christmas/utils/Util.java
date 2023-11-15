@@ -15,30 +15,30 @@ import java.util.stream.Collectors;
 
 public class Util {
 
-    public static int convertToInt(String input) {
+    public static int convertToInt(final String input) {
         try {
             return Integer.parseInt(input);
-        } catch (NumberFormatException exception) {
+        } catch (final NumberFormatException exception) {
             throw new NumberFormatException(exception.getMessage());
         }
     }
 
-    public static List<String> splitMenuFromString(String input) {
+    public static List<String> splitMenuFromString(final String input) {
         try {
             validateHasBlank(input);
             return List.of(input.split(MENU_DELIMITER));
-        } catch (IllegalArgumentException exception) {
+        } catch (final IllegalArgumentException exception) {
             throw new IllegalArgumentException(exception.getMessage());
         }
     }
 
-    private static void validateHasBlank(String input) {
+    private static void validateHasBlank(final String input) {
         if (input.contains(BLANK)) {
             throw new IllegalArgumentException(INPUT_BLANK_ERROR.getMessage());
         }
     }
 
-    public static Map<Menu, Integer> parseMenuAndCount(List<String> input) {
+    public static Map<Menu, Integer> parseMenuAndCount(final List<String> input) {
         try {
             return input.stream()
                     .map(string -> string.split(MENU_COUNT_DELIMITER))
