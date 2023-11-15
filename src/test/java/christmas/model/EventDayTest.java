@@ -127,11 +127,12 @@ class EventDayTest {
     void 지난_날짜_계산_기능(int today) {
         //given
         EventDay eventDay = new EventDay(today);
+        int expectedDay = today - 1;
 
         //when
-        int remainDays = eventDay.calculateDayFromDecember();
+        int lastDays = eventDay.calculateDayFromDecember();
 
         //when
-        assertThat(remainDays).isEqualTo(today - 1);
+        assertThat(lastDays).isEqualTo(expectedDay);
     }
 }
