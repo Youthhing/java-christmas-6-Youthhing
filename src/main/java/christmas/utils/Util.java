@@ -2,6 +2,10 @@ package christmas.utils;
 
 import static christmas.constant.ErrorMessage.INPUT_BLANK_ERROR;
 import static christmas.constant.ErrorMessage.MENU_INPUT_ERROR;
+import static christmas.constant.StringConstant.BLANK;
+import static christmas.constant.StringConstant.MENU_COUNT_DELIMITER;
+import static christmas.constant.StringConstant.MENU_DELIMITER;
+import static christmas.constant.StringConstant.NUMBER_FORMAT;
 
 import christmas.model.Menu;
 import java.text.DecimalFormat;
@@ -10,10 +14,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Util {
-
-    private static final String MENU_DELIMITER = ",";
-    private static final String MENU_COUNT_DELIMITER = "-";
-    private static final String BLANK = " ";
 
     public static int convertToInt(String input) {
         try {
@@ -53,7 +53,7 @@ public class Util {
     }
 
     public static String integerFormat(int money) {
-        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        DecimalFormat decimalFormat = new DecimalFormat(NUMBER_FORMAT);
         return decimalFormat.format(money);
     }
 }

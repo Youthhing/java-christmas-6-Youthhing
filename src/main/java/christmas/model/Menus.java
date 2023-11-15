@@ -111,9 +111,10 @@ public class Menus {
         StringBuilder result = new StringBuilder();
         menus.forEach((menu, integer) ->
                 result.append(menu)
-                        .append(" ")
+                        .append(BLANK)
                         .append(integer)
-                        .append("개\n"));
+                        .append(COUNT)
+                        .append(NEXT_LINE));
         return result.toString();
     }
 }

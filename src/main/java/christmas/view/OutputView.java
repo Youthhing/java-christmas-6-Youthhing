@@ -2,6 +2,8 @@ package christmas.view;
 
 import static christmas.constant.ErrorMessage.DATE_INPUT_ERROR;
 import static christmas.constant.ErrorMessage.MENU_INPUT_ERROR;
+import static christmas.constant.StringConstant.COUNT;
+import static christmas.constant.StringConstant.WON;
 
 import christmas.model.Badge;
 import christmas.model.Discount;
@@ -19,9 +21,7 @@ public class OutputView {
     private static final String PREVIEW_BENEFIT_MESSAGE_BACK = "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
     private static final String ORDERED_MENU = "<주문 메뉴>";
     private static final String BEFORE_DISCOUNT_TOTAL_MONEY = "<할인 전 총주문 금액>";
-    private static final String WON = "원";
     private static final String PRESENT_MENU = "<증정 메뉴>";
-    private static final String COUNT = " 1개";
     private static final String BENEFIT_LIST = "<혜택 내역>";
     private static final String XMAS_DDAY_DISCOUNT = "크리스마스 디데이 할인: ";
     private static final String WEEKDAY_DISCOUNT = "평일 할인: ";
