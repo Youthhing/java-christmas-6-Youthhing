@@ -51,7 +51,7 @@ public enum Menu {
                 .orElse(NO_MENU);
     }
 
-    public static List<Menu> getMenuByType(MenuType type) {
+    public static List<Menu> getMenusByType(MenuType type) {
         return Arrays.stream(Menu.values())
                 .filter(menu -> menu.type == type)
                 .toList();

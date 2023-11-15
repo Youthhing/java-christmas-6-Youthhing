@@ -45,7 +45,7 @@ class MenuTest {
         Menu menu = Menu.getMenuByName(name);
 
         //when
-        List<Menu> menuByType = Menu.getMenuByType(dessert);
+        List<Menu> menuByType = Menu.getMenusByType(dessert);
 
         //then
         assertThat(menuByType).contains(menu);
@@ -60,7 +60,7 @@ class MenuTest {
         Menu menu = Menu.getMenuByName(name);
 
         //when
-        List<Menu> menuByType = Menu.getMenuByType(appetizer);
+        List<Menu> menuByType = Menu.getMenusByType(appetizer);
 
         //then
         assertThat(menuByType).contains(menu);
@@ -75,7 +75,7 @@ class MenuTest {
         Menu menu = Menu.getMenuByName(name);
 
         //when
-        List<Menu> menuByType = Menu.getMenuByType(main);
+        List<Menu> menuByType = Menu.getMenusByType(main);
 
         //then
         assertThat(menuByType).contains(menu);
@@ -90,7 +90,7 @@ class MenuTest {
         Menu menu = Menu.getMenuByName(name);
 
         //when
-        List<Menu> menuByType = Menu.getMenuByType(drink);
+        List<Menu> menuByType = Menu.getMenusByType(drink);
 
         //then
         assertThat(menuByType).contains(menu);

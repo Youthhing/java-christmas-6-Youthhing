@@ -18,7 +18,7 @@ public class Discount {
         return 0;
     }
 
-    public int calculateFinalMoney() {
+    public int calculateFinalPayMoney() {
         return menus.calculateTotalMoney() - calculateTotalDiscount();
     }
 

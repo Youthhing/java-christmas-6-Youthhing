@@ -179,7 +179,7 @@ class DiscountTest {
                 + discount.calculateDiscountBySpecialDay();
 
         //when
-        int finalMoney = discount.calculateFinalMoney();
+        int finalMoney = discount.calculateFinalPayMoney();
 
         //then
         assertThat(finalMoney).isEqualTo(menus.calculateTotalMoney() - finalDiscount);

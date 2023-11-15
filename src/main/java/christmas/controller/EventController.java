@@ -32,7 +32,7 @@ public class EventController {
         outputView.printBenefitList(discount);
         outputView.printTotalDiscount(discount.calculateTotalBenefitPrice());
         outputView.printEmptyLine();
-        outputView.printFinalPayMoney(discount.calculateFinalMoney());
+        outputView.printFinalPayMoney(discount.calculateFinalPayMoney());
         outputView.printBadge(Badge.getBadgeByDiscount(discount.calculateTotalBenefitPrice()));
     }
 

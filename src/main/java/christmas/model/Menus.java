@@ -52,11 +52,11 @@ public class Menus {
     }
 
     private static boolean isContainDessert(Menu menu) {
-        return Menu.getMenuByType(MenuType.DESSERT).contains(menu);
+        return Menu.getMenusByType(MenuType.DESSERT).contains(menu);
     }
 
     private static boolean isContainMain(Menu menu) {
-        return Menu.getMenuByType(MenuType.MAIN).contains(menu);
+        return Menu.getMenusByType(MenuType.MAIN).contains(menu);
     }
 
     private int calculateEachMoney(Menu menu) {
@@ -95,12 +95,12 @@ public class Menus {
     }
 
     private void validateMenuType(Map<Menu, Integer> menus) {
-        if (isAllDrink(menus)) {
+        if (hasOnlyDrinks(menus)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_ONLY_DRINK_ERROR.getMessage());
         }
     }
 
-    private boolean isAllDrink(Map<Menu, Integer> menus) {
+    private boolean hasOnlyDrinks(Map<Menu, Integer> menus) {
         return menus.keySet()
                 .stream()
                 .allMatch(menu -> menu.getType() == MenuType.DRINK);
