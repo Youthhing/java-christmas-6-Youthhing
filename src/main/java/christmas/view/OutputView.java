@@ -30,8 +30,9 @@ public class OutputView {
     private static final String PRESENT_EVENT = "증정 이벤트: ";
     private static final String MINUS = "-";
     private static final String FINAL_PAY_MONEY = "<할인 후 예상 결제 금액>";
-    private static final String FINAL_DISCOUNT_MONEY = "<총 혜택 금액>";
+    private static final String FINAL_DISCOUNT_MONEY = "<총혜택 금액>";
     private static final String DECEMBER_EVENT_BADGE = "<12월 이벤트 배지>";
+    private static final String NONE = "없음";
 
 
     public void printWelcomeMessage() {
@@ -81,11 +82,7 @@ public class OutputView {
 
     public void printBenefitList(Discount discount) {
         System.out.println(BENEFIT_LIST);
-        printXmasDiscount(discount);
-        printWeekdayDiscount(discount);
-        printWeekendDiscount(discount);
-        printSpecialDayDiscount(discount);
-        printPresentDiscount(discount);
+        printEachBenefits(discount);
         printEmptyLine();
     }
 
@@ -111,6 +108,18 @@ public class OutputView {
     public void printBadge(Badge badgeByDiscount) {
         System.out.println(DECEMBER_EVENT_BADGE);
         System.out.println(badgeByDiscount);
+    }
+
+    private void printEachBenefits(Discount discount) {
+        if (discount.calculateTotalBenefitPrice() == 0) {
+            System.out.println(NONE);
+            return;
+        }
+        printXmasDiscount(discount);
+        printWeekdayDiscount(discount);
+        printWeekendDiscount(discount);
+        printSpecialDayDiscount(discount);
+        printPresentDiscount(discount);
     }
 
     private void printXmasDiscount(Discount discount) {
