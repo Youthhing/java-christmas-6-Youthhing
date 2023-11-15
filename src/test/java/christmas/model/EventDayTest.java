@@ -134,5 +134,4 @@ class EventDayTest {
         //when
         assertThat(remainDays).isEqualTo(today - 1);
     }
-
 }
