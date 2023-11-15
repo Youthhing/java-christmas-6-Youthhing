@@ -47,18 +47,18 @@ public enum Menu {
     public static Menu getMenuByName(String name) {
         return Arrays.stream(Menu.values())
                 .filter(menu -> menu.getName().equals(name))
-                .findFirst()
+                .findAny()
                 .orElse(NO_MENU);
+    }
+
+    public static List<Menu> getMenuByType(MenuType type) {
+        return Arrays.stream(Menu.values())
+                .filter(menu -> menu.type == type)
+                .toList();
     }
 
     public MenuType getType() {
         return type;
-    }
-
-    public List<Menu> getMenuByType(MenuType type) {
-        return Arrays.stream(Menu.values())
-                .filter(menu -> menu.type == type)
-                .toList();
     }
 
     @Override
